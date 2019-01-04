@@ -1,14 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>User Login</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>welcome user</h1>
-<a href="newuser">ADMIN</a><br><br>
-<a href="loginform">USER</a>
+
+	<div class="container">
+		<h2>WELCOME TO LOGIN FORM</h2>
+		<form:form action="saveUser" modelAttribute="user" method="POST">
+			<div class="form-group">
+				<label for="userName">Username:</label>
+				<form:input path="userName" class="form-control" />
+
+			</div>
+			<div class="form-group">
+				<label for="password">Password:</label>
+				<form:input path="password" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="role">Type of user:</label>
+				<form:select path="role" name="list" id="id" accesskey="target" class="form-control">
+					<form:option value="NONE" label="Choose a type" />
+					<form:option value="ROLE_USER" name="user" label="USER" />
+					<form:option value="ROLE_ADMIN" name="admin" label="ADMIN" />
+
+				</form:select>
+
+			</div>
+
+			<input type="submit" value="save" class="btn btn-default" />
+
+		</form:form>
+		<a href="dashboard">BACK TO DASHBOARD</a>
+	</div>
+
 </body>
 </html>

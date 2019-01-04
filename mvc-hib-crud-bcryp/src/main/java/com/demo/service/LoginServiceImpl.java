@@ -1,5 +1,7 @@
 package com.demo.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,9 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	@Transactional
-	public void saveUser(User user) {
+	public void saveUser(User user,HttpServletRequest request) {
 		user.setPassword(encode(user.getPassword()));
+		String role=(String) request.getSession(false).getAttribute("role");
 		loginDAO.saveUser(user);
 	}
 
@@ -41,4 +44,6 @@ public class LoginServiceImpl implements LoginService {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		return encoder.matches(rawPassword, encodedPassword);
 	}
+
+	
 }

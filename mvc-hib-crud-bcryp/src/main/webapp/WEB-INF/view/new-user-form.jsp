@@ -16,7 +16,7 @@
 
 	<div class="container">
 		<h2>ADMIN(CREATE USER)</h2>
-		<form:form action="saveUser" modelAttribute="user" method="POST">
+		<form:form action="Save" modelAttribute="user" method="POST">
 			<div class="form-group">
 				<label for="userName">Username:</label>
 				<form:input path="userName" class="form-control" />
